@@ -1,0 +1,54 @@
+# === Rust ===
+/target/
+**/*.rs.bk
+
+# Rust package manager artifacts
+Cargo.lock
+.cargo/
+
+# === macOS ===
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+*.swp
+
+# macOS-specific metadata
+com.apple.*
+
+# === Linux (Ubuntu, etc.) ===
+*~
+.nfs*
+
+# === Windows ===
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# === Editor-specific (optional but common) ===
+
+# VS Code
+.vscode/
+
+# JetBrains (CLion, IntelliJ, etc.)
+.idea/
+
+# Vim / Neovim
+*.swp
+*.swo
+
+# Emacs
+*~
+
+# === Logs & backups ===
+*.log
+*.bak
+*.tmp
+
+# === Others ===
+/node_modules/

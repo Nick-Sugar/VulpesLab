@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Editor</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/monaco-editor@0.44.0/min/vs/loader.js"></script>
+</head>
+<body>
+    <div class="editor-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>HTML Editor</h1>
+            </div>
+            <div class="header-right">
+                <button id="runBtn" class="btn btn-primary">実行</button>
+                <button id="saveBtn" class="btn btn-secondary">保存</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-tabs">
+                    <button class="tab-btn active" data-tab="files">ファイル</button>
+                    <button class="tab-btn" data-tab="elements">要素</button>
+                    <button class="tab-btn" data-tab="css-editor">CSS</button>
+                </div>
+
+                <!-- File Explorer -->
+                <div id="files-tab" class="tab-content active">
+                    <div class="file-explorer">
+                        <div class="file-header">
+                            <span>ファイル</span>
+                            <button id="newFileBtn" class="btn-icon">+</button>
+                        </div>
+                        <div class="file-tree">
+                            <div class="file-item active" data-file="index.html">
+                                <span class="file-icon">📄</span>
+                                <span>index.html</span>
+                            </div>
+                            <div class="file-item" data-file="style.css">
+                                <span class="file-icon">🎨</span>
+                                <span>style.css</span>
+                            </div>
+                            <div class="file-item" data-file="script.js">
+                                <span class="file-icon">⚡</span>
+                                <span>script.js</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Element Tree -->
+                <div id="elements-tab" class="tab-content">
+                    <div class="element-tree">
+                        <div class="element-header">要素ツリー</div>
+                        <!-- 
+                            <div id="elementTree" class="tree-container">
+                        -->
+                                <!-- Dynamic content -->
+                        <!--
+                            </div>
+                        -->
+                        <ul id="elementTree" class="tree-container">
+                            <!-- Dynamic content via JS -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- CSS Visual Editor -->
+                <div id="css-editor-tab" class="tab-content">
+                    <div class="css-visual-editor">
+                        <div class="css-header">CSSエディター</div>
+                        <div class="css-properties">
+                            <div class="property-group">
+                                <label>背景色</label>
+                                <input type="color" id="bgColor" value="#ffffff">
+                            </div>
+                            <div class="property-group">
+                                <label>文字色</label>
+                                <input type="color" id="textColor" value="#000000">
+                            </div>
+                            <div class="property-group">
+                                <label>フォントサイズ</label>
+                                <input type="range" id="fontSize" min="8" max="72" value="16">
+                                <span id="fontSizeValue">16px</span>
+                            </div>
+                            <div class="property-group">
+                                <label>マージン</label>
+                                <input type="number" id="margin" value="0" min="0">
+                                <span>px</span>
+                            </div>
+                            <div class="property-group">
+                                <label>パディング</label>
+                                <input type="number" id="padding" value="0" min="0">
+                                <span>px</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Editor Area -->
+            <div class="editor-area">
+                <div class="editor-tabs">
+                    <div class="tab active" data-editor="html">HTML</div>
+                    <div class="tab" data-editor="css">CSS</div>
+                    <div class="tab" data-editor="js">JavaScript</div>
+                </div>
+                <div id="editor" class="code-editor"></div>
+            </div>
+
+            <!-- Preview Area -->
+            <div class="preview-area">
+                <div class="preview-header">
+                    <div class="preview-controls">
+                        <button class="device-btn active" data-device="desktop">
+                            <span>🖥️</span> デスクトップ
+                        </button>
+                        <button class="device-btn" data-device="tablet">
+                            <span>📱</span> タブレット
+                        </button>
+                        <button class="device-btn" data-device="mobile">
+                            <span>📱</span> モバイル
+                        </button>
+                        <button class="device-btn" data-device="custom">
+                            <span>⚙️</span> カスタム
+                        </button>
+                    </div>
+                    <div class="custom-size" id="customSize" style="display: none;">
+                        <input type="number" id="customWidth" placeholder="幅" value="800">
+                        <span>×</span>
+                        <input type="number" id="customHeight" placeholder="高さ" value="600">
+                    </div>
+                </div>
+                <div class="preview-container">
+                    <iframe id="preview" class="preview-frame desktop"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
